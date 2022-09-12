@@ -50,7 +50,7 @@ end
 
 def starts_with_consonant?(string)
   # YOUR CODE HERE
-  /\A[a-z&&[^aeiou]]/i.match?(string)
+  return /\A[a-z&&[^aeiou]]/i.match?(string)
 end
 
 input = gets.chomp
@@ -58,7 +58,10 @@ puts starts_with_consonant?(input)
 
 def binary_multiple_of_4?(string)
   # YOUR CODE HERE
-  
+  if (s) == "0"
+    return true
+  end
+  return /^[01]*(00)$/.match(s)
 end
 
 # Part 3
@@ -66,4 +69,17 @@ end
 # Object representing a book
 class BookInStock
   # YOUR CODE HERE
+  attr_reader :isbn, :price
+
+  def initialize(isbn, price)
+		if isbn.empty?  or price <= 0
+      raise ArgumentError, 
+			"Illegal argument" 
+		@isbn = isbn
+		@price = price
+	end
+
+  def price_as_string
+    return "$" + sprintf("%.2f", @price)
+  end
 end
