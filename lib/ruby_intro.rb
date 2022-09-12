@@ -14,7 +14,7 @@ end
 def max_2_sum(arr)
   # YOUR CODE HERE
   maxsum=0;
-  puts arr.sort! {|x, y| y <=> x}
+  arr.sort! {|x, y| y <=> x}
   if arr.size == 1
     maxsum=arr[0].to_i
   elsif arr.size > 1
@@ -53,15 +53,12 @@ def starts_with_consonant?(string)
   return /\A[a-z&&[^aeiou]]/i.match?(string)
 end
 
-input = gets.chomp
-puts starts_with_consonant?(input)
-
-def binary_multiple_of_4?(string)
+def binary_multiple_of_4?(s)
   # YOUR CODE HERE
   if (s) == "0"
     return true
   end
-  return /^[01]*(00)$/.match(s)
+  return /^[01]*(00)$/.match?(s)
 end
 
 # Part 3
@@ -69,12 +66,13 @@ end
 # Object representing a book
 class BookInStock
   # YOUR CODE HERE
-  attr_reader :isbn, :price
+  attr_accessor :isbn, :price
 
   def initialize(isbn, price)
 		if isbn.empty?  or price <= 0
       raise ArgumentError, 
 			"Illegal argument" 
+    end
 		@isbn = isbn
 		@price = price
 	end
